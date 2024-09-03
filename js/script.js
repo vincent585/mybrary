@@ -4,6 +4,7 @@ const showFormBtn = document.querySelector("#showForm");
 const cancelBtn = document.querySelector("#cancel");
 const dialogModal = document.querySelector("dialog");
 const addBtn = document.querySelector("#addBook");
+const form = document.querySelector("dialog form");
 
 window.addEventListener("load", () => {
   seedLibrary();
@@ -14,8 +15,24 @@ showFormBtn.addEventListener("click", () => {
   dialogModal.showModal();
 });
 
-addBtn.addEventListener("click", (event) => {
+dialogModal.addEventListener("close", (e) => {
+  console.log(dialogModal.returnValue);
+});
+
+form.addEventListener("submit", (event) => {
   event.preventDefault();
+
+  let formData = new FormData(form);
+  let book = new Book(
+    formData.get("title"),
+    formData.get("author"),
+    formData.get("pages"),
+    formData.get("read") === "true"
+  );
+
+  addBookToLibrary(book);
+  libraryContainer.appendChild(createBookElement(book));
+  dialogModal.close();
 });
 
 
