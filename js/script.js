@@ -1,10 +1,10 @@
 const myLibrary = [];
 const libraryContainer = document.querySelector(".library-container");
 const showFormBtn = document.querySelector("#showForm");
-const cancelBtn = document.querySelector("#cancel");
 const dialogModal = document.querySelector("dialog");
-const addBtn = document.querySelector("#addBook");
 const form = document.querySelector("dialog form");
+const addBtn = document.querySelector("#add");
+const cancelBtn = document.querySelector("#cancel");
 
 window.addEventListener("load", () => {
   seedLibrary();
@@ -15,11 +15,12 @@ showFormBtn.addEventListener("click", () => {
   dialogModal.showModal();
 });
 
-dialogModal.addEventListener("close", (e) => {
-  console.log(dialogModal.returnValue);
+cancelBtn.addEventListener("click", () => {
+  form.reset();
+  dialogModal.close();
 });
 
-form.addEventListener("submit", (event) => {
+addBtn.addEventListener("click", (event) => {
   event.preventDefault();
 
   let formData = new FormData(form);
@@ -32,6 +33,7 @@ form.addEventListener("submit", (event) => {
 
   addBookToLibrary(book);
   libraryContainer.appendChild(createBookElement(book));
+  form.reset();
   dialogModal.close();
 });
 
