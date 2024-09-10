@@ -55,6 +55,7 @@ function addBookToLibrary(book) {
 
 function createBookElement(book) {
   let bookCard = document.createElement("div");
+  bookCard.setAttribute("data-index", myLibrary.indexOf(book));
   bookCard.classList.add("book-card");
 
   let title = document.createElement("p");
@@ -69,11 +70,30 @@ function createBookElement(book) {
   let read = document.createElement("p");
   read.innerText = `Read: ${book.read === true ? "yes" : "no"}`;
 
-  let bookInfo = [title, author, pages, read];
+  let deleteBtn = document.createElement("button");
+  deleteBtn.innerText = "Delete";
+  deleteBtn.addEventListener("click", (event) => {
+    let bookToRemove = event.target.parentNode;
+    let index = parseInt(bookToRemove.dataset.index);
+
+    bookToRemove.remove();
+    myLibrary.splice(index, 1);
+    updateBookIndeces();
+  });
+
+  let bookInfo = [title, author, pages, read, deleteBtn];
 
   bookCard.append(...bookInfo);
 
   return bookCard;
+}
+
+function updateBookIndeces() {
+  var books = [...libraryContainer.children];
+
+  books.forEach((book, i) => {
+    book.dataset.index = i;
+  });
 }
 
 function seedLibrary() {
