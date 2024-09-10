@@ -37,7 +37,9 @@ addBtn.addEventListener("click", (event) => {
   dialogModal.close();
 });
 
-
+Book.prototype.updateReadStatus = function () {
+  this.read = !this.read;
+};
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -69,6 +71,17 @@ function createBookElement(book) {
 
   let read = document.createElement("p");
   read.innerText = `Read: ${book.read === true ? "yes" : "no"}`;
+  let updateBtn = document.createElement("button");
+  updateBtn.innerText = "Update";
+
+  updateBtn.addEventListener("click", (event) => {
+    let bookToUpdate = event.target.parentNode;
+    let index = parseInt(bookToUpdate.dataset.index);
+    let book = myLibrary.at(index);
+
+    book.updateReadStatus();
+    read.innerText = `Read: ${book.read === true ? "yes" : "no"}`;
+  });
 
   let deleteBtn = document.createElement("button");
   deleteBtn.innerText = "Delete";
@@ -81,7 +94,7 @@ function createBookElement(book) {
     updateBookIndeces();
   });
 
-  let bookInfo = [title, author, pages, read, deleteBtn];
+  let bookInfo = [title, author, pages, read, updateBtn, deleteBtn];
 
   bookCard.append(...bookInfo);
 
