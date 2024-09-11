@@ -28,7 +28,7 @@ addBtn.addEventListener("click", (event) => {
     formData.get("title"),
     formData.get("author"),
     formData.get("pages"),
-    formData.get("read") === "true"
+    formData.get("read") === "on"
   );
 
   addBookToLibrary(book);

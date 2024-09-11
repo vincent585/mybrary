@@ -14,3 +14,62 @@
 .book-card {
     border: 1px solid black;
 }
+
+.input-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 20px;
+}
+
+.input-wrapper input {
+    height: 2rem;
+    border-radius: 4px;
+}
+
+.input-wrapper input[type="checkbox"] {
+    transform: scale(2);
+    justify-self: start;
+    margin-left: 5px;
+}
+
+.form-buttons {
+    grid-column: 1 / 2;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.form-buttons button {
+    width: 20%;
+    height: 2.5rem;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+#add {
+    background-color: #0366fc;
+    border: none;
+    color: #fff;
+}
+
+#cancel {
+    background-color: #fff;
+    color: #78797a;
+    border: 2px solid #78797a;
+}
+
+form {
+    display: grid;
+    gap: 15px;
+    padding: 15px;
+    font-size: 20px;
+}
+
+dialog {
+    width: max-content;
+    height: fit-content;
+    position: fixed;
+    top: 20%;
+    justify-self: center;
+}
