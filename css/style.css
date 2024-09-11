@@ -2,17 +2,86 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: "Noto Sans", sans-serif;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    padding: 30px;
+}
+
+.controls {
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.controls button {
+    width: 50%;
+    height: 2.5rem;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bolder;
+    background-color: #0366fc;
+    border: none;
+    color: #fff;
 }
 
 .library-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     padding: 30px;
 }
 
 .book-card {
     border: 1px solid black;
+    display: grid;
+    gap: 15px;
+    padding: 15px;
+    height: 300px;
+    background-color: #fcfbf4;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 2px 2px 2px gray;
+    font-size: 20px;
+}
+
+.book-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.book-buttons button {
+    width: 30%;
+    height: 2.5rem;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.book-buttons button:first-child {
+    background-color: #0366fc;
+    border: none;
+    color: #fff;
+    font-weight: bolder;
+}
+
+.book-buttons button:first-child:hover {
+    background-color: #035adb;
+}
+
+.book-buttons button:last-child:hover {
+    background-color: #e2a0a0;
+}
+
+.book-buttons button:last-child {
+    background-color: #fff;
+    border: 2px solid #f54040;
+    color: #f54040;
 }
 
 .input-wrapper {

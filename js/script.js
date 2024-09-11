@@ -71,11 +71,15 @@ function createBookElement(book) {
 
   let read = document.createElement("p");
   read.innerText = `Read: ${book.read === true ? "yes" : "no"}`;
+
+  let btnContainer = document.createElement("div");
+  btnContainer.classList.add("book-buttons");
+
   let updateBtn = document.createElement("button");
   updateBtn.innerText = "Update";
 
   updateBtn.addEventListener("click", (event) => {
-    let bookToUpdate = event.target.parentNode;
+    let bookToUpdate = event.target.parentNode.parentNode;
     let index = parseInt(bookToUpdate.dataset.index);
     let book = myLibrary.at(index);
 
@@ -86,7 +90,7 @@ function createBookElement(book) {
   let deleteBtn = document.createElement("button");
   deleteBtn.innerText = "Delete";
   deleteBtn.addEventListener("click", (event) => {
-    let bookToRemove = event.target.parentNode;
+    let bookToRemove = event.target.parentNode.parentNode;
     let index = parseInt(bookToRemove.dataset.index);
 
     bookToRemove.remove();
@@ -94,7 +98,10 @@ function createBookElement(book) {
     updateBookIndeces();
   });
 
-  let bookInfo = [title, author, pages, read, updateBtn, deleteBtn];
+  btnContainer.appendChild(updateBtn);
+  btnContainer.appendChild(deleteBtn);
+
+  let bookInfo = [title, author, pages, read, btnContainer];
 
   bookCard.append(...bookInfo);
 
