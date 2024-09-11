@@ -24,6 +24,14 @@
 .input-wrapper input {
     height: 2rem;
     border-radius: 4px;
+    background-color: #d6dfe9;
+    border: none;
+    font-size: 16px;
+}
+
+.input-wrapper>input:focus,
+.form-buttons>button:focus {
+    outline: 2px solid #0366fc;
 }
 
 .input-wrapper input[type="checkbox"] {
@@ -59,10 +67,18 @@
     border: 2px solid #78797a;
 }
 
+#add:hover {
+    background-color: #035adb;
+}
+
+#cancel:hover {
+    background-color: #d6dfe9;
+}
+
 form {
     display: grid;
     gap: 15px;
-    padding: 15px;
+    padding: 30px;
     font-size: 20px;
 }
 
@@ -72,4 +88,7 @@ dialog {
     position: fixed;
     top: 20%;
     justify-self: center;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 2px 2px 2px gray;
 }
