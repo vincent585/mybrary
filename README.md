@@ -2,4 +2,4 @@
 
 Project outline here: https://www.theodinproject.com/lessons/node-path-javascript-library
 
-Live link: Coming soon!
+[Live Link](https://vincent585.github.io/mybrary/)
