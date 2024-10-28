@@ -37,18 +37,25 @@ addBtn.addEventListener("click", (event) => {
   dialogModal.close();
 });
 
-Book.prototype.updateReadStatus = function () {
-  this.read = !this.read;
-};
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.info = function () {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read === true ? "read it" : "not read yet"}.`;
-  };
+  get info() {
+    return this.formatInfo();
+  }
+
+  updateReadStatus() {
+    this.read = !this.read;
+  }
+
+  formatInfo() {
+    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read ? "read it" : "not read yet"}.`;
+  }
 }
 
 function addBookToLibrary(book) {
@@ -57,7 +64,7 @@ function addBookToLibrary(book) {
 
 function createBookElement(book) {
   let bookCard = document.createElement("div");
-  bookCard.setAttribute("data-index", myLibrary.indexOf(book));
+  bookCard.setAttribute("data-index", myLibrary.indexOf(book).toString());
   bookCard.classList.add("book-card");
 
   let title = document.createElement("p");
@@ -109,10 +116,10 @@ function createBookElement(book) {
 }
 
 function updateBookIndeces() {
-  var books = [...libraryContainer.children];
+  let books = [...libraryContainer.children];
 
   books.forEach((book, i) => {
-    book.dataset.index = i;
+    book.dataset.index = i.toString();
   });
 }
 
